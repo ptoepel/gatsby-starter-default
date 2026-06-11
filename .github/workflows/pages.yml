@@ -28,9 +28,12 @@ jobs:
         with:
           static_site_generator: gatsby
       - run: npm ci --legacy-peer-deps
+        env:
+          NODE_OPTIONS: --openssl-legacy-provider
       - run: npx gatsby build --prefix-paths
         env:
           PREFIX_PATHS: 'true'
+          NODE_OPTIONS: --openssl-legacy-provider
       - uses: actions/upload-pages-artifact@v3
         with:
           path: ./public
